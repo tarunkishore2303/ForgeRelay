@@ -2,15 +2,37 @@
 
 **Cloud judgment. Local drafting. Verified code.**
 
-A Codex + Ollama experiment by Tarun Kishore.
+**A practical hybrid coding workflow, built by Tarun Kishore.**
 
-A reusable local runner and Codex skill for small Python coding assignments. It calls your running Ollama service, needs only Python's standard library, and preserves each result separately. Default model: qwen2.5-coder:7b; context: 8192; output: 1200 tokens; at most one worker repair.
+ForgeRelay connects Codex with local Ollama models to delegate small Python coding tasks. Codex plans the work, defines clear requirements and reviews the results. Ollama drafts the code, and independent tests verify it before application. The reusable Codex skill and runner need only Python's standard library.
 
-Read [WRITEUP.md](WRITEUP.md) for the experiment, economics and limits. [EVIDENCE.json](EVIDENCE.json) contains the summarized observed results. No subscription savings are claimed from local token counts.
+## What you get
+
+- **Focused delegation:** selected source, explicit constraints and acceptance criteria.
+- **Reviewable proposals:** one Python file per task, ready for primary-agent inspection.
+- **Independent verification:** baseline checks, frozen source and tests in a separate candidate directory.
+- **Bounded feedback:** one precise worker repair attempt, with primary-agent fallback when needed.
+- **Controlled application:** verified code, source-drift checks and backups for overwritten targets.
+- **Traceable outcomes:** preserved attempts, test logs, local timing and usage records.
+
+Start with small helpers, targeted unit tests and localized changes with clear expected behavior.
+
+```mermaid
+flowchart LR
+    A[Codex defines a task] --> B[Baseline checks and snapshot]
+    B --> C[Ollama drafts code]
+    C --> D[Codex reviews and runs tests]
+    D -->|Pass| E[Apply verified code]
+    D -->|Feedback| F[One local repair]
+    F --> D
+    D -->|Needs more work| G[Codex completes the task]
+```
 
 ## Use it now
 
-From this directory:
+Requirements: Python 3.10+, a running Ollama service and an installed model. The Codex skill also needs a Codex environment with local shell access. Defaults: `qwen2.5-coder:7b`, 8192-token context, 1200-token output and one worker repair. Configure these in [config.json](skills/local-ollama-delegate/assets/config.json).
+
+From this directory, after starting Ollama and installing the model:
 
 ```powershell
 python delegate.py doctor --smoke
@@ -19,7 +41,7 @@ python delegate.py report --project example-project
 python economics.py estimate --scenario examples/conditional-savings.json
 ```
 
-The example project already has an applied money-formatting helper produced through this workflow. Its first answer failed boolean validation, one local repair fixed it, and all eight project tests then passed. The original local run artifacts are excluded from this public repository; summarized measurements are in EVIDENCE.json.
+The included Python/SQLite booking backend demonstrates a locally generated money-formatting helper. After one feedback round, the helper passed all eight example-project tests without a manual code change. Run them with `python -m unittest discover -s tests -v` from `example-project`.
 
 ## Install the skill in another project
 
@@ -80,18 +102,18 @@ python economics.py compare --measurement my-measurement.json
 
 The template intentionally cannot produce a result until you enter measurements and confirm matching acceptance/usage conditions. The 10% result in conditional-savings.json is an illustration, not a prediction for your subscription.
 
-## What the runner guarantees and what it does not
+## Scope and safeguards
 
 It checks baseline tests before dispatch, keeps source snapshots and artifacts within the selected project, validates syntax/output limits, executes only master-specified command arrays, requires explicit review before verification/application, backs up an overwritten target, refuses changed source or unverified candidate edits, and applies only one target file. It distinguishes accepted raw code from master-corrected code.
 
-It currently emits one Python file and snapshots Python files in selected directories; list non-Python fixtures explicitly. It does not give the worker tools, automatically review code, measure this session's billed usage, install model weights, sandbox malicious Python, or guarantee net savings. Existing source fixtures and tests must fit the selected snapshot/context budget.
+ForgeRelay currently proposes one Python file per task. Directory snapshots include Python source; list non-Python fixtures explicitly. The worker receives supplied context and generates text, while the primary agent owns review, test commands and application. The separate candidate directory is not a security sandbox: review generated code before execution. Available hardware, model quality and task scope influence outcomes. Net usage savings require comparable primary-only and hybrid measurements.
 
 Relevant official documentation: [Codex skills](https://learn.chatgpt.com/docs/build-skills), [subscription pricing and usage](https://learn.chatgpt.com/docs/pricing), [Ollama parameters](https://docs.ollama.com/modelfile).
 
-## Results and related projects
+## Experiment and further reading
 
-Five full feature tasks passed 0/5 at both 16384 and 32768 context. A bounded helper passed eight tests after one local repair. These single trials do not establish a general success rate or measured subscription savings. See [the full experiment](WRITEUP.md).
+ForgeRelay grew from coding exercises and realistic booking-backend assignments. Those trials shaped its focus on small contracts, independent verification and bounded repairs. Read [the full experiment](WRITEUP.md) for methodology, benchmark outcomes and usage analysis, or [EVIDENCE.json](EVIDENCE.json) for summarized measurements.
 
-Existing MIT-licensed projects cover related workflows: [Local Coding Agent](https://github.com/pvnc228/local-coding-agent), [delegate-local](https://github.com/IsmaelMartinez/delegate-local), and [rjv Codex/Ollama skills](https://github.com/rjvim/ai-skills). ForgeRelay records this experiment and provides a small Python-only runner; it does not claim to invent local delegation.
+Explore related projects: [Local Coding Agent](https://github.com/pvnc228/local-coding-agent), [delegate-local](https://github.com/IsmaelMartinez/delegate-local), and [rjv Codex/Ollama skills](https://github.com/rjvim/ai-skills).
 
 Licensed under MIT.
