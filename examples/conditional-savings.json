@@ -1,0 +1,12 @@
+{
+  "label": "Illustrative assumptions, not experiment measurements",
+  "delegatable_share": 0.2,
+  "success_rate": 0.8,
+  "overhead_ratio": 0.3,
+  "baseline_usage_units": 100,
+  "usage_unit": "hypothetical primary-usage units",
+  "power_watts": 100,
+  "local_seconds": 600,
+  "price_per_kwh": 8,
+  "currency": "INR"
+}

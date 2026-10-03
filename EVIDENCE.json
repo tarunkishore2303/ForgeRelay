@@ -1,0 +1,37 @@
+{
+  "model": "qwen2.5-coder:7b",
+  "billing": "ChatGPT/Codex subscription",
+  "real_world_full_tasks": {
+    "context_16384": {
+      "accepted": 0,
+      "attempted": 5,
+      "local_wall_seconds": 366.57
+    },
+    "context_32768": {
+      "accepted": 0,
+      "attempted": 5,
+      "local_wall_seconds": 454.79
+    }
+  },
+  "bounded_helper_demo": {
+    "first_attempt": "boolean validation failed",
+    "local_repair": "accepted",
+    "master_code_changes": false,
+    "passing_tests": 8,
+    "local_wall_seconds": 3.64,
+    "prompt_tokens": 1148,
+    "output_tokens": 195
+  },
+  "primary_only_usage": null,
+  "hybrid_primary_usage": null,
+  "measured_net_usage_savings": null,
+  "fixed_subscription_fee_reduction": 0,
+  "limitations": [
+    "Single-pass task trials are not population estimates.",
+    "Local tokens do not measure avoided primary subscription usage."
+  ],
+  "reports": [
+    "WRITEUP.md"
+  ],
+  "raw_artifacts_in_repository": false
+}

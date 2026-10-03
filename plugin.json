@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "forge-relay",
+  "version": "0.1.0",
+  "description": "Delegate small coding tasks to local Ollama with review, isolated checks and outcome records.",
+  "author": {
+    "name": "Tarun Kishore"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ForgeRelay",
+        "shortDescription": "Small local coding tasks",
+        "longDescription": "A local skill and standard-library runner for bounded coding assignments, one repair attempt, verification and usage accounting.",
+        "developerName": "Tarun Kishore",
+        "category": "Productivity",
+        "defaultPrompt": "Use local Ollama for a small, well-specified coding task and verify the result before applying it."
+      }
+    }
+  }
+}

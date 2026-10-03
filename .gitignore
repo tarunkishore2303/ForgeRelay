@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.local-delegation/
+.agents/
+test-data/
+.venv/
+.env
+.env.*
+*.sqlite
+*.db

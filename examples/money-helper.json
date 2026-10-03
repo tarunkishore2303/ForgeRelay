@@ -1,0 +1,13 @@
+{
+  "id": "format-money-cents",
+  "kind": "helper",
+  "scope": "unit",
+  "goal": "Add booking.money.format_cents(value) to format signed integer cents as a decimal string with exactly two fractional digits. Do not use floats or Decimal.",
+  "target": "booking/money.py",
+  "context": [{"path": "booking/errors.py"}],
+  "snapshot_paths": ["booking", "tests"],
+  "constraints": ["Import InvalidRequest from .errors and raise it for every non-exact-int value, including bool.", "Only implement format_cents and its required import, under 25 lines. Preserve negative signs; zero must not have a negative sign. No currency symbol or grouping separators.", "Use integer arithmetic; arbitrary-sized Python integers must retain precision."],
+  "acceptance": ["format_cents(0) == '0.00', format_cents(1) == '0.01', format_cents(101) == '1.01'.", "format_cents(-1) == '-0.01' and format_cents(-12345) == '-123.45'.", "format_cents(100000000000000000001) == '1000000000000000000.01'.", "True, False, float, string and None raise InvalidRequest."],
+  "baseline_commands": [["python", "-m", "unittest", "tests.test_baseline", "-v"]],
+  "test_commands": [["python", "-m", "unittest", "discover", "-s", "tests", "-v"]]
+}

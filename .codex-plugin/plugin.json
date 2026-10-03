@@ -1,0 +1,6 @@
+{
+  "name": "forge-relay",
+  "version": "0.1.0",
+  "description": "Local Ollama delegation with bounded tasks, review and verification.",
+  "skills": "./skills/"
+}

@@ -1,0 +1,16 @@
+{
+  "usage_unit": "dashboard percentage points consumed within comparable reset windows",
+  "same_task_and_acceptance": false,
+  "both_builds_passed": false,
+  "comparable_usage_conditions": false,
+  "primary_only_usage_units": null,
+  "hybrid_primary_usage_units": null,
+  "primary_only_wall_minutes": null,
+  "hybrid_wall_minutes": null,
+  "primary_only_extra_spend": 0,
+  "hybrid_extra_spend": 0,
+  "power_watts": 0,
+  "local_seconds": 0,
+  "price_per_kwh": 0,
+  "currency": "INR"
+}
