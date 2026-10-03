@@ -8,3 +8,6 @@ test-data/
 .env.*
 *.sqlite
 *.db
+
+# Keep social post drafts outside the repository
+LINKEDIN_POST.md

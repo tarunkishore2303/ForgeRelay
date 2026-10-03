@@ -90,7 +90,7 @@ Relevant official documentation: [Codex skills](https://learn.chatgpt.com/docs/b
 
 ## Results and related projects
 
-Five full feature tasks passed 0/5 at both 16384 and 32768 context. A bounded helper passed eight tests after one local repair. These single trials do not establish a general success rate or measured subscription savings. See [the full experiment](WRITEUP.md) and [LinkedIn post](LINKEDIN_POST.md).
+Five full feature tasks passed 0/5 at both 16384 and 32768 context. A bounded helper passed eight tests after one local repair. These single trials do not establish a general success rate or measured subscription savings. See [the full experiment](WRITEUP.md).
 
 Existing MIT-licensed projects cover related workflows: [Local Coding Agent](https://github.com/pvnc228/local-coding-agent), [delegate-local](https://github.com/IsmaelMartinez/delegate-local), and [rjv Codex/Ollama skills](https://github.com/rjvim/ai-skills). ForgeRelay records this experiment and provides a small Python-only runner; it does not claim to invent local delegation.
 
